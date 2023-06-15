@@ -1,0 +1,217 @@
+// agrega datos al campo Departamento - Provincia - Distrito
+
+$(document).ready(function() {
+  $('#departmentSelect').change(function() {
+    var department = $(this).val();
+
+    $('#provinceSelect').empty().append("<option value=''>Seleccionar provincia</option>");
+    $('#districtSelect').empty().append("<option value=''>Seleccionar distrito</option>");
+
+    if (department === 'Amazonas') {
+      var provinces = [
+        "Chachapoyas",
+        "Bagua",
+        "Bongará",
+        "Condorcanqui",
+        "Luya",
+        "Rodríguez de Mendoza",
+        "Utcubamba"
+      ];
+
+      $.each(provinces, function(index, value) {
+        $('#provinceSelect').append("<option value='" + value + "'>" + value + "</option>");
+      });
+    }
+  });
+
+  $('#provinceSelect').change(function() {
+    var province = $(this).val();
+
+    $('#districtSelect').empty().append("<option value=''>Seleccionar distrito</option>");
+
+    if (province === 'Chachapoyas') {
+      var districts = [
+        "Chachapoyas",
+        "Asunción",
+        "Balsas",
+        "Cheto",
+        "Chiliquin",
+        "Chuquibamba",
+        "Granada",
+        "Huancas",
+        "La Jalca",
+        "Leimebamba",
+        "Levanto",
+        "Magdalena",
+        "Mariscal Castilla",
+        "Molinopampa",
+        "Montevideo",
+        "Olleros",
+        "Quinjalca",
+        "San Francisco de Daguas",
+        "San Isidro de Maino",
+        "Soloco",
+        "Sonche"
+      ];
+
+      $.each(districts, function(index, value) {
+        $('#districtSelect').append("<option value='" + value + "'>" + value + "</option>");
+      });
+    }
+  });
+
+  $('#addValueBtn').click(function() {
+    var department = $('#departmentSelect').val();
+    var province = $('#provinceSelect').val();
+    var district = $('#districtSelect').val();
+    var selectedOptions = [];
+
+    if (department) {
+      selectedOptions.push(department);
+    }
+    if (province) {
+      selectedOptions.push(province);
+    }
+    if (district) {
+      selectedOptions.push(district);
+    }
+
+    var selectedValue = selectedOptions.join(' - ');
+    $('#textBox').val(selectedValue);
+
+    // Llenar el input con el valor seleccionado
+    $('#dpdingresado').val(selectedValue);
+  });
+});
+
+
+// -------------------------------------------------------------------------------
+
+
+// cambia el dvi DPD por un p igual a los demas campos
+
+$(document).ready(function() {
+  // Crear un nuevo elemento <p>
+  var newParagraph = $('<p>').addClass("dpdtitulo");
+
+  // Crear un nuevo elemento <label> con el texto deseado y la clase requerida
+  var newLabel = $('<label>').text("Departamento - Provincia - Distrito *").addClass("required");
+
+  // Agregar el nuevo elemento <label> al nuevo elemento <p>
+  newParagraph.append(newLabel);
+
+  // Reemplazar el div con id "dpd_field" por el nuevo elemento <p>
+  $('#dpd_field').replaceWith(newParagraph);
+});				
+
+
+// -------------------------------------------------------------------------------
+
+
+// hace el campo dpd read only
+
+
+$(document).ready(function() {
+  // Hacer que el input con id "dpdingresado" sea no modificable
+  $('#dpdingresado').prop('readonly', true);
+});
+
+
+// -------------------------------------------------------------------------------
+
+
+// agrega nuevo boton dpd
+
+
+$(document).ready(function() {
+  // Crear un nuevo botón con el texto "Seleccionar"
+  var button = $('<button>').addClass('accionadpd').text('Seleccionar');
+
+  // Insertar el botón después del párrafo con clase "dpdtitulo"
+  $('.dpdtitulo').after(button);
+});
+
+
+
+// -------------------------------------------------------------------------------
+
+
+// nuevo botton realiza funcion del elemento widget
+
+$(document).ready(function() {
+  // Obtener el enlace del div con clase "exad-modal"
+  var modalLink = $('.exad-modal a');
+
+  // Crear un evento de clic para el botón con clase "accionadpd"
+  $('.accionadpd').click(function(event) {
+    event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
+    modalLink.trigger('click'); // Disparar el evento de clic en el enlace del div "exad-modal"
+  });
+});
+
+
+// -------------------------------------------------------------------------------
+
+
+// muestra seleccion dpd si no es para lima metropolitana
+
+$(document).ready(function() {
+  // Obtener el input de tipo radio con id "enviodestino_otro-lugar"
+  var radioOtroLugar = $('#enviodestino_otro-lugar');
+
+  // Obtener los elementos a ocultar
+  var dpdtitulo = $('.dpdtitulo');
+  var accionadpd = $('.accionadpd');
+  var dpdingresadoField = $('#dpdingresado_field');
+
+  // Ocultar los elementos al cargar la página
+  dpdtitulo.hide();
+  accionadpd.hide();
+  dpdingresadoField.hide();
+
+  // Agregar un evento de cambio al input de tipo radio
+  radioOtroLugar.change(function() {
+    // Verificar si el radio está seleccionado
+    if ($(this).is(':checked')) {
+      // Limpiar el valor del input con id "dpdingresado"
+      $('#dpdingresado').val('');
+
+      // Mostrar los elementos
+      dpdtitulo.show();
+      accionadpd.show();
+      dpdingresadoField.show();
+    }
+  });
+});
+
+
+
+// -------------------------------------------------------------------------------
+
+
+// coloca valor lima y oculta seleccion dpd si es para lima metropolitana
+
+
+$(document).ready(function() {
+  // Obtener el input de tipo radio con id "enviodestino_lima-metropolitana"
+  var radioLimaMetropolitana = $('#enviodestino_lima-metropolitana');
+
+  // Obtener los elementos a ocultar
+  var dpdtitulo = $('.dpdtitulo');
+  var accionadpd = $('.accionadpd');
+  var dpdingresadoField = $('#dpdingresado_field');
+
+  // Agregar un evento de cambio al input de tipo radio
+  radioLimaMetropolitana.change(function() {
+    // Verificar si el radio está seleccionado
+    if ($(this).is(':checked')) {
+      // Colocar el valor "Lima Metropolitana" en el input con id "dpdingresado"
+      $('#dpdingresado').val('Lima Metropolitana');
+
+      // Ocultar los elementos
+      dpdtitulo.hide();
+      accionadpd.hide();
+      dpdingresadoField.hide();
+    }
+  });
+});				

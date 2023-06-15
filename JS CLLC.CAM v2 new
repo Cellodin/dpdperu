@@ -1,0 +1,211 @@
+
+// -------------------------------------------------------------------------------
+
+// 1 agregando un select para Departamento - Provincia - Distrito
+
+// 1.1 - se construye el popup ---------------------------
+
+
+// 1.2 - cambia el heading H5 "Departamento - Provincia - Distrito " a un <p> ---------------------------
+
+$(document).ready(function () {
+    // Crear un nuevo elemento <p>
+    var newParagraph = $('<p>').addClass("dpdtitulo");
+
+    // Crear un nuevo elemento <label> con el texto deseado y la clase requerida
+    var newLabel = $('<label>').text("Departamento - Provincia - Distrito *").addClass("required");
+
+    // Agregar el nuevo elemento <label> al nuevo elemento <p>
+    newParagraph.append(newLabel);
+
+    // Reemplazar el div con id "dpd_field" por el nuevo elemento <p>
+    $('#dpd_field').replaceWith(newParagraph);
+});
+
+
+// 1.3 agrega nuevo boton "Seleccionar" para abrir el popup JS ---------------------------
+
+$(document).ready(function () {
+    // Crear un nuevo botón con el texto "Seleccionar"
+    var button = $('<button>').addClass('accionadpd').text('Seleccionar');
+
+    // Insertar el botón después del párrafo con clase "dpdtitulo"
+    $('.dpdtitulo').after(button);
+});
+
+
+// 1.4 - hace el input con id "dpdingresado" read only ---------------------------
+
+$(document).ready(function () {
+    // Hacer que el input con id "dpdingresado" sea no modificable
+    $('#dpdingresado').prop('readonly', true);
+});
+
+
+// 1.5 - boton "seleccionar abre el popup" ---------------------------
+
+$(document).ready(function () {
+    // Obtener el enlace del div con clase "exad-modal"
+    var modalLink = $('.exad-modal a');
+
+    // Crear un evento de clic para el botón con clase "accionadpd"
+    $('.accionadpd').click(function (event) {
+        event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
+        modalLink.trigger('click'); // Disparar el evento de clic en el enlace del div "exad-modal"
+    });
+});
+
+// 1.6 - (popup) agrega datos al nuevo campo <p> Departamento - Provincia - Distrito ---------------------------
+
+$(document).ready(function () {
+    $('#departmentSelect').change(function () {
+        var department = $(this).val();
+
+        $('#provinceSelect').empty().append("<option value=''>Seleccionar provincia</option>");
+        $('#districtSelect').empty().append("<option value=''>Seleccionar distrito</option>");
+
+        if (department === 'Amazonas') {
+            var provinces = [
+                "Chachapoyas",
+                "Bagua",
+                "Bongará",
+                "Condorcanqui",
+                "Luya",
+                "Rodríguez de Mendoza",
+                "Utcubamba"
+            ];
+
+            $.each(provinces, function (index, value) {
+                $('#provinceSelect').append("<option value='" + value + "'>" + value + "</option>");
+            });
+        }
+    });
+
+    $('#provinceSelect').change(function () {
+        var province = $(this).val();
+
+        $('#districtSelect').empty().append("<option value=''>Seleccionar distrito</option>");
+
+        if (province === 'Chachapoyas') {
+            var districts = [
+                "Chachapoyas",
+                "Asunción",
+                "Balsas",
+                "Cheto",
+                "Chiliquin",
+                "Chuquibamba",
+                "Granada",
+                "Huancas",
+                "La Jalca",
+                "Leimebamba",
+                "Levanto",
+                "Magdalena",
+                "Mariscal Castilla",
+                "Molinopampa",
+                "Montevideo",
+                "Olleros",
+                "Quinjalca",
+                "San Francisco de Daguas",
+                "San Isidro de Maino",
+                "Soloco",
+                "Sonche"
+            ];
+
+            $.each(districts, function (index, value) {
+                $('#districtSelect').append("<option value='" + value + "'>" + value + "</option>");
+            });
+        }
+    });
+
+    $('#addValueBtn').click(function () {
+        var department = $('#departmentSelect').val();
+        var province = $('#provinceSelect').val();
+        var district = $('#districtSelect').val();
+        var selectedOptions = [];
+
+        if (department) {
+            selectedOptions.push(department);
+        }
+        if (province) {
+            selectedOptions.push(province);
+        }
+        if (district) {
+            selectedOptions.push(district);
+        }
+
+        var selectedValue = selectedOptions.join(' - ');
+        $('#textBox').val(selectedValue);
+
+        // Llenar el input con el valor seleccionado
+        $('#dpdingresado').val(selectedValue);
+    });
+});
+
+
+
+// 1.7 - coloca valor lima y oculta seleccion dpd si es para lima metropolitana ---------------------------
+
+$(document).ready(function () {
+    // Obtener el input de tipo radio con id "enviodestino_lima-metropolitana"
+    var radioLimaMetropolitana = $('#enviodestino_lima-metropolitana');
+
+    // Obtener los elementos a ocultar
+    var dpdtitulo = $('.dpdtitulo');
+    var accionadpd = $('.accionadpd');
+    var dpdingresadoField = $('#dpdingresado_field');
+
+    // Agregar un evento de cambio al input de tipo radio
+    radioLimaMetropolitana.change(function () {
+        // Verificar si el radio está seleccionado
+        if ($(this).is(':checked')) {
+            // Colocar el valor "Lima Metropolitana" en el input con id "dpdingresado"
+            $('#dpdingresado').val('Lima Metropolitana');
+
+            // Ocultar los elementos
+            dpdtitulo.hide();
+            accionadpd.hide();
+            dpdingresadoField.hide();
+        }
+    });
+});
+
+
+// 1.8 - muestra seleccion dpd cuando esta seleccionado envio para otro lugar ---------------------------
+
+$(document).ready(function () {
+    // Obtener el input de tipo radio con id "enviodestino_otro-lugar"
+    var radioOtroLugar = $('#enviodestino_otro-lugar');
+
+    // Obtener los elementos a ocultar
+    var dpdtitulo = $('.dpdtitulo');
+    var accionadpd = $('.accionadpd');
+    var dpdingresadoField = $('#dpdingresado_field');
+
+    // Ocultar los elementos al cargar la página
+    dpdtitulo.hide();
+    accionadpd.hide();
+    dpdingresadoField.hide();
+
+    // Agregar un evento de cambio al input de tipo radio
+    radioOtroLugar.change(function () {
+        // Verificar si el radio está seleccionado
+        if ($(this).is(':checked')) {
+            // Limpiar el valor del input con id "dpdingresado"
+            $('#dpdingresado').val('');
+
+            // Mostrar los elementos
+            dpdtitulo.show();
+            accionadpd.show();
+            dpdingresadoField.show();
+        }
+    });
+});
+
+
+
+
+
+
+
+
+

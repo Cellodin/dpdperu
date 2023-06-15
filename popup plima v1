@@ -1,0 +1,163 @@
+<html>
+
+<head>
+    <title>Selección de Ubicación</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .departamentotitle {
+            margin-bottom: 0px !important;
+            margin-top: 10px;
+        }
+
+        .provinciatitle {
+            margin-bottom: 0px !important;
+            margin-top: 10px;
+        }
+
+        .distritotitle2 {
+            margin-bottom: 0px !important;
+            margin-top: 10px;
+        }
+
+        .botonagregar2 {
+            margin-top: 10px;
+        }
+
+        .error {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p class="distritotitle2">Distrito:</p>
+        <select name="selectDistrito2" class="form-control distritofield2" required="">
+            <option value="">Seleccione</option>
+            <option value="Ancón">Ancón</option>
+            <option value="Ate">Ate</option>
+            <option value="Barranco">Barranco</option>
+            <option value="Breña">Breña</option>
+            <option value="Carabayllo">Carabayllo</option>
+            <option value="Chaclacayo">Chaclacayo</option>
+            <option value="Chorrillos">Chorrillos</option>
+            <option value="Cieneguilla">Cieneguilla</option>
+            <option value="Comas">Comas</option>
+            <option value="El Agustino">El Agustino</option>
+            <option value="Independencia">Independencia</option>
+            <option value="Jesús María">Jesús María</option>
+            <option value="La Molina">La Molina</option>
+            <option value="La Victoria">La Victoria</option>
+            <option value="Lima (distrito capital)">Lima (distrito capital)</option>
+            <option value="Lince">Lince</option>
+            <option value="Los Olivos">Los Olivos</option>
+            <option value="Lurigancho-Chosica">Lurigancho-Chosica</option>
+            <option value="Lurín">Lurín</option>
+            <option value="Magdalena del Mar">Magdalena del Mar</option>
+            <option value="Miraflores">Miraflores</option>
+            <option value="Pachacamac">Pachacamac</option>
+            <option value="Pucusana">Pucusana</option>
+            <option value="Puente Piedra">Puente Piedra</option>
+            <option value="Punta Hermosa">Punta Hermosa</option>
+            <option value="Punta Negra">Punta Negra</option>
+            <option value="Rímac">Rímac</option>
+            <option value="San Bartolo">San Bartolo</option>
+            <option value="San Borja">San Borja</option>
+            <option value="San Isidro">San Isidro</option>
+            <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
+            <option value="San Juan de Miraflores">San Juan de Miraflores</option>
+            <option value="San Luis">San Luis</option>
+            <option value="San Martín de Porres">San Martín de Porres</option>
+            <option value="San Miguel">San Miguel</option>
+            <option value="Santa Anita">Santa Anita</option>
+            <option value="Santa María del Mar">Santa María del Mar</option>
+            <option value="Santa Rosa">Santa Rosa</option>
+            <option value="Santiago de Surco">Santiago de Surco</option>
+            <option value="Surquillo">Surquillo</option>
+            <option value="Villa El Salvador">Villa El Salvador</option>
+            <option value="Villa María del Triunfo">Villa María del Triunfo</option>
+
+        </select>
+
+        <button class="botonagregar2" onclick="agregarDatos2()">Agregar</button>
+
+        <textarea class="testt" readonly></textarea>
+
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            var sel_distrito = document.querySelector('select[name="selectDistrito"]');
+            var textarea = document.querySelector('.testt');
+            var botonAgregar2 = document.querySelector('.botonagrega2');
+
+            var valorActual = '';
+
+            function llenarSelect(selector, items) {
+                selector.innerHTML = '';
+                for (var item of items) {
+                    var option = document.createElement('option');
+                    option.value = item;
+                    option.text = item;
+                    selector.appendChild(option);
+                }
+            }
+
+            botonAgregar2.addEventListener('click', agregarDatos2);
+
+            function agregarDatos2() {
+                var distrito2 = sel_distrito.value;
+                if (distrito2 !== '') {
+                    var combinacion = distrito2;
+                    if (combinacion !== valorActual) {
+                        textarea.value = combinacion;
+                        valorActual = combinacion;
+                        var dlimaIngresado = document.querySelector('#dlimaingresado');
+                        if (dlimaIngresado) {
+                            dlimaIngresado.value = textarea.value;
+                        }
+                    }
+                } else {
+                    textarea.value = '';
+                    valorActual = '';
+                }
+            }
+
+            function quitarClaseActive() {
+                var overlayDiv = document.querySelector('.exad-modal-overlay.active');
+                if (overlayDiv) {
+                    overlayDiv.classList.remove('active');
+                }
+            }
+
+            var botonAgregar2 = document.querySelector('.botonagregar2');
+            botonAgregar2.addEventListener('click', quitarClaseActive);
+
+
+            function quitarClaseActive3() {
+                var overlayDiv = document.querySelector('#exad-modal-38cbdf3');
+                if (overlayDiv) {
+                    overlayDiv.classList.remove('active');
+                }
+            }
+
+            var botonAgregar2 = document.querySelector('.botonagregar2');
+            botonAgregar2.addEventListener('click', quitarClaseActive2);
+
+        });
+    </script>
+</body>
+
+</html>

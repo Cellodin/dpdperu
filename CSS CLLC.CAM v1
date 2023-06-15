@@ -1,0 +1,106 @@
+/* CELULAR --------------------------------------------------------------------------- */
+@media (max-width: 400px){
+    
+.nm-header-logo svg, .nm-header-logo img {
+    height: 50px;
+}
+
+    #billing_provincia_field {
+        width: 100% !important;
+        clear: both !important;
+    
+    }
+    
+    #billing_distrito_field {
+        width: 100% !important;
+        clear: both !important;
+    
+    }
+
+}				
+
+
+/* DESKTOP --------------------------------------------------------------------------- */
+@media (min-width: 400px){
+    
+    .exad-close-btn {
+        margin-top: 300px !important;
+    }
+
+    .accionadpd {
+        margin-bottom: 10px !important;
+    }
+
+    #enviodestino_field {
+        margin-bottom: 0px !important;
+    }
+
+
+    #enviodestino_field label {
+        margin-right: 5px !important;
+    }
+    
+    #enviodestino_field span input {
+        margin-right: 2px !important;
+    }
+    
+    .dpdtitulo {
+        margin-bottom: 5px !important;
+    } 
+
+}		
+
+
+/* ALL --------------------------------------------------------------------------- */				
+
+.select2-container {
+    vertical-align: baseline !important;
+}
+
+.woocommerce-additional-fields {
+    display: none !important;   
+}
+
+#billing_recomendacion-direccion_field {
+    border: 0px !important;
+    padding: 0px !important;
+    margin: 0 0 5px !important;
+}
+
+
+.nm-quantity-wrap.qty-show{
+    border-bottom: 1px solid #dadada !important;
+}
+
+
+.nm-qty-minus.nm-font.nm-font-media-play.flip {
+    font-size: 25px !important;
+}
+
+.nm-qty-plus.nm-font.nm-font-media-play {
+    font-size: 25px !important;
+}
+
+.nm-quantity-wrap.qty-show {
+    border-bottom: none !important;
+}
+
+.nm-quantity-wrap.qty-show .quantity {
+    margin-left: 7px !important;
+}
+
+.dpdtitulo {
+    color: black;
+}
+
+.exad-modal-button {
+    display: none !important;
+}
+
+.testt {
+    display: none !important;
+}
+
+
+
+/*  */				
