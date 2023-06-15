@@ -1,0 +1,274 @@
+var provincias = {
+                "Amazonas": {
+                    "Bagua": ["Aramango", "Bagua", "Copallín", "El Parco", "Imaza", "La Peca"],
+                    "Bongará": ["Chisquilla", "Churuja", "Corosha", "Cuispes", "Florida", "Jazán",
+                    "Recta", "San Carlos", "Shipasbamba", "Valera", "Yambrasbamba"],
+                    "Chachapoyas": ["Seleccione el Distrito", "Asunsión", "Balsas", "Chachapoyas", "Cheto", "Chiliquín", "Chuquibamba", "Granada", "Huancas", "La Jalca", "Leimebamba", "Levanto", "Magdalena", "Mariscal Castilla", "Molinopampa", "Montevideo", "Olleros", "Quinjalca", "San Francisco de Daguas", "San Isidro de Maino", "Soloco", "Sonche"],
+                    "Condorcanqui": ["Seleccione el Distrito", "El Cenepa", "Nieva", "Río Santiago"],
+                    "Luya": ["Seleccione el Distrito", "Camporredondo", "Cocabamba", "Colcamar", "Conila", "Inguilpata", "Lámud", "Longuita", "Lonya Chico", "Luya", "Luya Viejo", "María", "Ocalli", "Ocumal", "Pisuquía", "Providencia", "San Cristóbal", "San Francisco del Yeso", "San Jerónimo", "San Juan de Lopecancha", "Santa Catalina", "Santo Tomás", "Tingo", "Trita"],
+                    "Rodríguez de Mendoza": ["Seleccione el Distrito", "San Nicolás", "Chirimoto", "Cochamal", "Huambo", "Limababa", "Longar", "Mariscal Benavides", "Milpuc", "Omia", "Santa Rosa", "Totora", "Vista Alegre"],
+                    "Utcubamba": ["Seleccione el Distrito", "Bagua Grande", "Cajaruro", "Cumba", "El Milagro", "Jamalca", "Lonya Grande", "Yamón"]
+                },
+                // 
+                "Ancash": {
+                    "Aija": ["Seleccione el Distrito", "Aija", "Coris", "Huacllán", "La Merced", "Succha"],
+                    "Antonio Raymondi": ["Seleccione el Distrito", "Llamellín", "Aczo", "Chaccho", "Chingas", "Mirgas", "San Juan de Rontoy"],
+                    "Asunción": ["Seleccione el Distrito", "Chacas", "Acochaca"],
+                    "Bolognesi": ["Seleccione el Distrito", "Abelardo Pardo", "Antonio Raymondi", "Aquia", "Cajatay", "Canis", "Chiquián", "Cólquioc", "Huallanca", "Huasta", "Huayllacayán", "La Primavera", "Mangas", "Pacllón", "San Miguel", "Ticllos"],
+                    "Carhuaz": ["Seleccione el Distrito", "Acopampa", "Amashca", "Anta", "Ataquero", "Carhuaz", "Marcará", "Pariahuanca", "San Miguel de Aco", "Shilla", "Tinco", "Yungar"],
+                    "Carlos Fermín Fitzcarrald": ["Seleccione el Distrito", "San Luis", "San Nicolás", "Yauya"],
+                    "Casma": ["Seleccione el Distrito", "Buenavista", "Casma", "Comandante Noel", "Yaután"],
+                    "Corongo": ["Seleccione el Distrito", "Aco", "Bambas", "Corongo", "Cusca", "La Pampa", "Yánac", "Yupán"],
+                    "Huaraz": ["Seleccione el Distrito", "Cochabamba", "Colcabamba", "Huanchay", "Huaraz", "Independencia", "Jangas", "La Libertad", "Olleros", "Pampas Grande", "Pariacoto", "Pira", "Tarica"],
+                    "Huari": ["Seleccione el Distrito", "Anra", "Cajay", "Chavín de Huántar", "Huacachi", "Huacchis", "Huachis", "Huántar", "Huari", "Masin", "Paucas", "Pontó", "Rahuapampa", "Rapayán", "San Marcos", "San Pedro de Chaná", "Uco"],
+                    "Huarmey": ["Seleccione el Distrito", "Cochapeti", "Culebras", "Huarmey", "Huayan", "Malvas"],
+                    "Huaylas": ["Seleccione el Distrito", "Caraz", "Huallanca", "Huanta", "Huaylas", "Mato", "Pamparomás", "Pueblo Libre", "Santa Cruz", "Santo Toribio", "Yuracmarca"],
+                    "Mariscal Luzuriaga": ["Seleccione el Distrito", "Casca", "Eleazar Guzmán Barrón", "Fidel Olivas Escudero", "Llama", "Llumpa", "Lucma", "Musga", "Piscobamba"],
+                    "Ocros": ["Seleccione el Distrito", "Acas", "Cajamarquilla", "Carhuapampa", "Cochas", "Congas", "Llipa", "Ocros", "San Cristóbal de Raján", "San Pedro", "Santiago de Chilcas"],
+                    "Pallasca": ["Seleccione el Distrito", "Bolognesi", "Cabana", "Conchucos", "Huacaschuque", "Huandoval", "Lacabamba", "Llapo", "Pallasca", "Pampas", "Santa Rosa", "Tauca"],
+                    "Pomabamba": ["Seleccione el Distrito", "Huayllán", "Parobamba", "Pomabamba", "Quinuabamba"],
+                    "Recuay": ["Seleccione el Distrito", "Catac", "Cotaparaco", "Huayllapampa", "Llacllín", "Marca", "Pampas Chico", "Pararín", "Recuay", "Tapacocha", "Ticapampa"],
+                    "Santa": ["Seleccione el Distrito", "Cáceres del Perú", "Chimbote", "Coishco", "Macate", "Moro", "Nepeña", "Nuevo Chimbote", "Samanco", "Santa"],
+                    "Sihuas": ["Seleccione el Distrito", "Acobamba", "Alfonso Ugarte", "Cashapampa", "Chingalpo", "Huayllabamba", "Quiches", "Ragash", "San Juan", "Sicsibamba", "Sihuas"],
+                    "Yungay": ["Seleccione el Distrito", "Cascapara", "Mancos", "Matacoto", "Quillo", "Ranrahirca", "Shupluy", "Yanama", "Yungay"]
+                },
+                // 
+                "Apurímac": {
+                    "Abancay": ["Seleccione el Distrito", "Abancay", "Chacoche", "Circa", "Curahuasi", "Huanipaca", "Lambrama", "Pichirhua", "San Pedro de Cachora", "Tamburco"],
+                    "Andahuaylas": ["Seleccione el Distrito", "Andahuaylas", "Adarapa", "Chiara", "Huancarama", "Huancaray", "Huayana", "José María Arguedas", "Kiquiabamba", "Kishuara", "Pacobamba", "Pacucha", "Pampachiri", "Pamacocha", "San Antonio de Cachi", "San Jerónimo", "San Miguel de Chaccrapampa", "Santa María de Chicmo", "Talavera de la Reyna", "Tumay Huaraca", "Turpo"],
+                    "Antabamba": ["Seleccione el Distrito", "Antabamba", "El Oro", "Huaquirca", "Juan Espinoza Medrano", "Oropesa", "Pachaconas", "Sabaino"],
+                    "Aymaraes": ["Seleccione el Distrito", "Capaya", "Caraybamba", "Chalhuanca", "Chapimarca", "Colcabamba", "Cotaruse", "Ihuayllo", "Justo Apu Sahuaraura", "Lucre", "Pocohuanca", "San Juan de Chacña", "Sañayca", "Soraya", "Tapayrihua", "Tintay", "Toraya", "Yanaca"],
+                    "Cotabambas": ["Seleccione el Distrito", "Chalhuahuachos", "Cotabambas", "Coyllurqui", "Haquira", "Mara", "Tambobamba"],
+                    "Chincheros": ["Seleccione el Distrito", "Anccohuayllo", "Chincheros", "Cocharcas", "Huaccana", "Ocobamba", "Ongoy", "Uranmarca", "Ranracancha", "Rocchac", "El Porvenir", "Los Chanckas"],
+                    "Grau": ["Seleccione el Distrito", "Chuquibambilla", "Curasco", "Curpahuasi", "Huayllati", "Mamara", "Mariscal Gamarra", "Micaela Bastidas", "Pataypampa", "Progreso", "San Antonio", "Santa Rosa", "Turpay", "Vilcabamba", "Virundo"]
+                },
+                //
+                "Arequipa": {
+                    "Arequipa": ["Seleccione el Distrito", "Alto Selva Alegre", "Arequipa", "Cayma", "Cerro Colorado", "Characato", "Chiguata", "Jacobo Hunter", "José Luis Bustamante y Rivero", "La Joya", "Mariano Melgar", "Miraflores", "Mollebamba", "Paucarpata", "Pocsi", "Polobaya", "Quequeña", "Sabandía", "Sachaca", "San Juan de Siguas", "San Juan de Tarucani", "Santa Isabel de Siguas", "Santa Rita de Siguas", "Socabaya", "Tiabaya", "Uchumayo", "Vitor", "Yanahuara", "Yarabamba", "Yura"],
+                    "Camaná": ["Seleccione el Distrito", "Camaná", "José María Quimper", "Mariano Nicolás Valcarcel", "Mariscal Cáceres", "Nicolás de Piérola", "Ocoña", "Quilca", "Samuel Pastor"],
+                    "Caravelí": ["Seleccione el Distrito", "Acarí", "Atico", "Atiquipa", "Bella Unión", "Cahuacho", "Caravelí", "Chala", "Cháparra", "Huanuhuanu", "Jaqui", "Lomas", "Quicacha", "Yauca"],
+                    "Castilla": ["Seleccione el Distrito", "Andara", "Aplao", "Ayo", "Chachas", "Chilcaymarca", "Choco", "Huancarqui", "Mochaguay", "Orcopampa", "Pampacolca", "Tipán", "Uñón", "Uraca", "Viraco"],
+                    "Caylloma": ["Seleccione el Distrito", "Achoma", "Cabanaconde", "Callalli", "Caylloma", "Chivay", "Coporaque", "Huambo", "Huanca", "Ichupampa", "Lari", "Lluta", "Maca", "Madrigal", "Majes", "San Antonio de Chuca", "Sibayo", "Tapay", "Tisco", "Tuti", "Yanque"],
+                    "Condesuyos": ["Seleccione el Distrito", "Andaray", "Cayarani", "Chichas", "Chuquibamba", "Iray", "Rio Grande", "Salamanca", "Yanaquihua"],
+                    "Islay": ["Seleccione el Distrito", "Cacachacra", "Deán Valdivia", "Islay", "Mejía", "Mollendo", "Punta de Bombón"],
+                    "La Unión": ["Seleccione el Distrito", "Alca", "Charcana", "Cotahuasi", "Huaynacotas", "Pampamarca", "Puyca", "Quechualla", "Sayla", "Tauría", "Tomepampa", "Toro"]
+                  },
+                  //
+                  "Ayacucho": {
+                    "Cangallo": ["Seleccione el Distrito", "Cangallo", "Chuschi", "Los Morochucos", "María Parado de Bellido", "Paras", "Totos"],
+                    "Huamanga": ["Seleccione el Distrito", "Acocro", "Acos Vinchos", "Andrés Avelino Cáceres Dorregaray", "Ayacucho", "Carmen Alto", "Chiara", "Jesús Nazareno", "Ocros", "Pacaycasa", "Quinua", "San José de Ticllas", "San Juan Bautista", "Santiago de Pischa", "Socos", "Tambillo", "Vinchos"],
+                    "Huanca Sancos": ["Seleccione el Distrito", "Carapo", "Sacsamarca", "Sancos", "Santiago de Lucanamarca"],
+                    "Huanta": ["Seleccione el Distrito", "Ayahuanco", "Huamanguilla", "Huanta", "Iguaín", "Llochegua", "Luricocha", "Santillana", "Sivia", "Canayre", "Uchuraccay", "Pucacolpa", "Chaca"],
+                    "La Mar": ["Seleccione el Distrito", "Anchihuay", "Anco", "Ayna", "Chilcas", "Chungui", "Luis Carranza", "Oronccoy", "San Miguel", "Santa Rosa", "Sumugari", "Tambo"],
+                    "Lucanas": ["Seleccione el Distrito", "Aucara", "Cabana Sur", "Carmen Salcedo", "Chaviña", "Chipao", "Huacuas", "Laramate", "Leoncio Prado", "Llauta", "Lucanas", "Ocaña", "Otoca", "Puquio", "Saisa", "San Cristóbal", "San Juan", "San Pedro", "San Pedro de Palco", "Sancos", "Santa Ana de Huaycahuacho", "Santa Lucía"],
+                    "Parinacochas": ["Seleccione el Distrito", "Coracora", "Chumpi", "Coronel Castañeda", "Pacapausa", "Pullo", "Puyasca", "San Francisco de Ravacayco", "Upahuacho"],
+                    "Páucar del Sara Sara": ["Seleccione el Distrito", "Colta", "Corculla", "Lampa", "Marcabamba", "Oyolo", "Pararca", "Pauza", "San Javier de Alpabamba", "San José de Ushua", "Sara Sara"],
+                    "Sucre": ["Seleccione el Distrito", "Belén", "Chalcos", "Chilcayoc", "Huacaña", "Morcolla", "Paico", "Querobamba", "San Pedro de Larcay", "San Salvador de Quije", "Santiago de Paucaray", "Soras"],
+                    "Víctor Fajardo": ["Seleccione el Distrito", "Alcamenca", "Apongo", "Asquipata", "Canaria", "Cayana", "Colca", "Huamanquiquia", "Huancapi", "Huancaraylla", "Huaya", "Sahua", "Vilcanchos"],
+                    "Vilcashuamán": ["Seleccione el Distrito", "Accomarca", "Carhuanca", "Concepción", "Huambalpa", "Independencia", "Saurama", "Vilvashuamán", "Vischongo"]
+                  },
+                  //
+                  "Cajamarca": {
+                    "Cajabamba": ["Seleccione el Distrito", "Cachachi", "Cajabamba", "Condebamba", "Sitacocha"],
+                    "Cajamarca": ["Seleccione el Distrito", "Asunsión", "Cajamarca", "Chetilla", "Cospán", "Jesús", "LLacanora", "La Encañada", "Los Baños del Inca", "Magdalena", "Matara", "Nomora", "San Juan"],
+                    "Celendín": ["Seleccione el Distrito", "Celendín", "Chumuch", "Cortegana", "Huasmin", "Jorge Chávez", "José Galvez", "La Libertad de Pallán", "Miguel Iglesias", "Oxamarca", "Sorochuco", "Sucre", "Utco"],
+                    "Contumazá": ["Seleccione el Distrito", "Chilete", "Contumazá", "Cupisnique", "Guzmango", "San Benito", "Santa Cruz de Toledo", "Tantarica", "Yonán"],
+                    "Cutervo": ["Seleccione el Distrito", "Callayuc", "Choros", "Cujillo", "Cutervo", "La Ramada", "<Pinpin></Pinpin>gos", "Querocotillo", "San Andrés de Cutervo", "San Juan de Cutervo", "San Luis de Lucma", "Santa Cruz", "Santo Domingo de la Capilla", "Santo Tomás", "Socota", "Toribio Casanova"],
+                    "Chota": ["Seleccione el Distrito", "Anguía", "Chadín", "Chalamarca", "Chiguirip", "Chimban", "Choropampa", "Chota", "Cochabamba", "Conchán", "Huambos", "Lajas", "Llama", "Miracosta", "Paccha", "Pion", "Querocoto", "San Juan de Licupis", "Tacabamba", "Tocmoche"],
+                    "Hualgayoc": ["Seleccione el Distrito", "Bambamarca", "Chugur", "Hualgayoc"],
+                    "Jaén": ["Seleccione el Distrito", "Bellavista", "Chontalí", "Colasay", "Huabal", "Jaén", "Las Pirias", "Pomahuanca", "Pucará", "Sallique", "San Felipe", "San José del Alto", "Santa Rosa"],
+                    "Santa Cruz": ["Seleccione el Distrito", "Andabamba", "Catache", "Chancaybaños", "La Esperanza", "Ninabamba", "Pulán", "Santa Cruz", "Saucepampa", "Sexi", "Uticyacu", "Yauyucan", "Idima"],
+                    "San Miguel": ["Seleccione el Distrito", "Bolívar", "Calquis", "Catilluc", "El Prado", "La Florida", "Llapa", "Nanchoc", "Niepos", "San Gregorio", "San Miguel", "San Silvestre de Conchán", "Tongod", "Unión Agua Blanca"],
+                    "San Ignacio": ["Seleccione el Distrito", "Chirinos", "Huarango", "La Coipa", "Namballe", "San Ignacio", "San José de Lourdes", "Tabaconas"],
+                    "San Marcos": ["Seleccione el Distrito", "Chancay", "Eduardo Villanueva", "Gregorio Pita", "Ichocán", "Jose Manuel Quiroz", "José Sagobal", "Pedro Gálvez"],
+                    "San Pablo": ["Seleccione el Distrito", "San Bernardino", "San Luis", "San Pablo", "Tumbaden"]
+                  },
+                  //
+                  "Callao": {
+                    "Callao": ["Seleccione el Distrito", "Bellavista", "Callao", "Carmen de la Legua", "La Perla", "La Punta", "Ventanilla", "Mi Perú"]
+                  },
+                  //
+                  "Cuzco": {
+                    "Acomayo": ["Seleccione el Distrito", "Acomayo", "Acopia", "Acos", "Mosoc Llacta", "Pomacanchi", "Rondocan", "Sangarará"],
+                    "Anta": ["Seleccione el Distrito", "Anta", "Ancahuasi", "Cachimayo", "Chinchaypujio", "Huarocondo", "Limatambo", "Mollepata", "Pucyura", "Zurite"],
+                    "Calca": ["Seleccione el Distrito", "Calca", "Coya", "Lamay", "Lares", "Pisac", "San Salvador", "Taray", "Yanatile"],
+                    "Canas": ["Seleccione el Distrito", "Checca", "Kunturkanki", "Langui", "Layo", "Pampamarca", "Quehue", "Túpac Amaru", "Yanaoca"],
+                    "Canchis": ["Seleccione el Distrito", "Checacupe", "Combapata", "Marangani", "Pitumarca", "San Pablo", "San Pedro", "Sicuani", "Tinta"],
+                    "Chumbivilcas": ["Seleccione el Distrito", "Ccapacmarca", "Chamaca", "Colquemarca", "Livitaca", "Llusco", "Quiñota", "Santo Tomás", "Valille"],
+                    "Cuzco": ["Seleccione el Distrito", "Ccorca", "Cuzco", "Poroy", "San Jerónimo", "San Sebastián", "Santiago", "Saylla", "Wanchaq"],
+                    "Espinar": ["Seleccione el Distrito", "Alto Pichigua", "Condoroma", "Coporaque", "Ocoruro", "Pallpata", "Pichigua", "Suyckutambo", "Yauri"],
+                    "La Convención": ["Seleccione el Distrito", "Echarati", "Huayopata", "Inkawasi", "Kimbiri", "Maranura", "Megantoni", "Ocobamba", "Pachari", "Quellouno", "Santa Ana", "Santa Teresa", "Vilcabamba", "Villa Kintiarina", "Villa Virgen"],
+                    "Paruro": ["Seleccione el Distrito", "Accha", "Ccapi", "Colcha", "Huanoquite", "Omacha", "Paccaritambo", "Paruro", "Pillpinto", "Yaurisque"],
+                    "Paucartambo": ["Seleccione el Distrito", "Caicay", "Challabamba", "Colquepata", "Huancarani", "Kosñipata", "Paucartambo"],
+                    "Quispicanchi": ["Seleccione el Distrito", "Andahuaylillas", "Camanti", "Ccarhuayo", "Ccatca", "Cusipata", "Huaro", "Lucre", "Marcapata", "Ocongate", "Oropesa", "Quiquijana", "Urcos"],
+                    "Urubamba": ["Seleccione el Distrito", "Chinchero", "Huayllabamba", "Machupicchu", "Maras", "Ollantaytambo", "Urubamba", "Yucay"]
+                  },
+                  //
+                  "Huancavelica": {
+                    "Acobamba": ["Seleccione el Distrito", "Acobamba", "Andabamba", "Anta", "Caja", "Marcas", "Paucará", "Pomacocha", "Rosario"],
+                    "Angaraes": ["Seleccione el Distrito", "Anchonga", "Callanmarca", "Ccochaccasa", "Chincho", "Congalla", "Huanca Huanca", "Huayllay Grande", "Julcamarca", "Lircay", "San Antonio de Antaparco", "Santo Tomás de Pata", "Secila"],
+                    "Castrovirreyna": ["Seleccione el Distrito", "Arma", "Aurahuá", "Capillas", "Castrovirreyna", "Chupamarca", "Cocas", "Huachos", "Huamatambo", "Mollepampa", "San Juan", "Santa Ana", "Tantara", "Ticrapo"],
+                    "Churcampa": ["Seleccione el Distrito", "Anco", "Chinchihuasi", "Churcampa", "Cosme", "El Carmen", "La Merced", "Locroja", "Pachamarca", "Paucarbamba", "San Miguel de Mayocc", "San Pedro de Coris"],
+                    "Huancavelica": ["Seleccione el Distrito", "Acobambilla", "Acoria", "Ascensión", "Conayca", "Cuenca", "Huachocolpa", "Huando", "Huancavelica", "Huayllahuara", "Izcuchaca", "Laria", "Manta", "Mariscal Cáceres", "Moya", "Nuevo Occoro", "Palca", "Pilchaca", "Vilva", "Yauli"],
+                    "Huaytará": ["Seleccione el Distrito", "Ayaví", "Córdoba", "Huayacundo Arma", "Huaytará", "Laramarca", "Ocoyo", "Pilpichaca", "Querco", "Quito-Arma", "San Antonio de Cusicancha", "San Francisco de Sangayaico", "San Isisdro", "Santiago de Chocorvos", "Santiago de Quirahuara", "Santo Domingo de Capillas", "Tambo"],
+                    "Tayacaja": ["Seleccione el Distrito", "Acostambo", "Acraquía", "Ahuaycha", "Andaymarca", "Colcabamba", "Daniel Hernández", "Huachocolpa", "Huaribamba", "Ñahuimpuquio", "Pampas", "Pazos", "Pichos", "Roble", "Quichuas", "Quishuar", "Salcabamba", "Salcahuasi", "San Marcos de Rocchac", "Santiago de Tucuma", "Surcubamba", "Tintay Puncu"]
+                  },
+                  //
+                  "Huánuco": {
+                    "Ambo": ["Seleccione el Distrito", "Ambo", "Cayna", "Colpas", "Conchamarca", "Huácar", "San Francisco", "San Rafael", "Tomay Kichwa"],
+                    "Dos de Mayo": ["Seleccione el Distrito", "Chuquis", "La Unión", "Marías", "Pachas", "Quivilla", "Ripán", "Shunqui", "Sillapata", "Yanas"],
+                    "Huacaybamba": ["Seleccione el Distrito", "Canchabamba", "Cochabamba", "Huacaybamba", "Pinra"],
+                    "Huánuco": ["Seleccione el Distrito", "Amarillis", "Chinchao", "Churumbamba", "Huánuco", "Margos", "Pillco Marca", "Quisqui", "San Francisco de Cayrán", "San Pablo de Pillao", "San Pedro de Chaulán", "Santa María del Valle", "Yurimayo", "Yacus"],
+                    "Huamalíes": ["Seleccione el Distrito", "Arancay", "Chavín de Pariarca", "Jacas Grande", "Jircan", "Llata", "Miraflores", "Monzón", "Punchao", "Puños", "Singa", "Tantamayo"],
+                    "Leoncio Prado": ["Seleccione el Distrito", "Castillo Grande", "Danie Alomía Robles ", "Hermilio Valdizán", "José Crespo y Castillo", "Luyando", "Mariano Dámaso Beraún", "Pucayacu", "Pueblo Nuevo", "Rupa-Rupa", "Santo Domingo de Anda"],
+                    "Marañón": ["Seleccione el Distrito", "Cholón", "Huacrachuco", "La Morada", "San Buenaventura", "Santa Rosa de Alto Yanajanca"],
+                    "Pachitea": ["Seleccione el Distrito", "Chaglla", "Molino", "Panao", "Umari"],
+                    "Puerto Inca": ["Seleccione el Distrito", "Codo del Pozuzo", "Honoria", "Puerto Inca", "Tournavista", "Yayapichis"],
+                    "Lauricocha": ["Seleccione el Distrito", "Baños", "Jesús", "Jivia", "Queropalca", "Rondos", "San Francisco de Asís", "San Miguel de Cauri"],
+                    "Yarowilca": ["Seleccione el Distrito", "Aparicio Pomares", "Cahuac", "Chacabamba", "Chavinillo", "Choras", "Jacas Chico", "Obas", "Pampamarca"]
+                  },
+                  //
+                  "Ica": {
+                    "Chincha": ["Seleccione el Distrito", "Alto Larán", "Chavín", "Chincha Alta", "Chincha Baja", "El Carmen", "Grocio Prado", "Pueblo Nuevo", "San Juan de Yanac", "San Pedro de Huacarpana", "Sunampe", "Tambo de Mora"],
+                    "Ica": ["Seleccione el Distrito", "Ica", "La Tinguiña", "Los Aquijes", "Ocucaje", "Pachacútec", "Parcona", "Pueblo Nuevo", "Salas", "San José de los Molinos", "San Juan Bautista", "Santiago", "Subtanjalla", "Tate", "Yauca del Rosario"],
+                    "Nazca": ["Seleccione el Distrito", "Changuillo", "El Ingenio", "Marcona", "Nazca", "Vista Alegre"],
+                    "Palpa": ["Seleccione el Distrito", "Llipata", "Palpa", "Río Grande", "Santa Cruz", "Tibillo"],
+                    "Pisco": ["Seleccione el Distrito", "Huancano", "Huay", "Independencia", "Paracas", "Pisco", "San Andrés", "San Clemente", "Túpac Amaru Inca"]
+                  },
+                  //
+                  "Junín": {
+                    "Concepción": ["Seleccione el Distrito", "Aco", "Andamarca", "Chambara", "Cochas", "Comas", "Concepción", "Heroínas Toledo", "Manzanares", "Mariscal Castilla", "Matahuasi", "Mito", "Nueve de Julio", "Orcotuna", "San José de Quero", "Santa Rosa de Ocopa"],
+                    "Chanchamayo": ["Seleccione el Distrito", "La Merced", "San Luis", "Perené", "Pichanaqui", "San Ramón", "Vítoc"],
+                    "Chupaca": ["Seleccione el Distrito", "Áhuac", "Chongos Bajo", "Chupaca", "Huáchac", "Huamancaca Chico", "San Juan de Yscos", "San Juan de Jarpa", "Tres de Diciembre", "Yanacancha"],
+                    "Huancayo": ["Seleccione el Distrito", "Carhuacallanga", "Chacapampa", "Chicche", "Chilca", "Chongos Alto", "Chupuro", "Colca", "Cullhuas", "El Tambo", "Huancayo", "Huacrapuquio", "Hualhuas", "Huancán", "Huasicancha", "Huayucachi", "Ingenio", "Pariahuanca", "Pilcomayo", "Pucará", "Quichuay", "Quilcas", "San Agustín de Cajas", "San Jerónimo de Tunán", "San Pedro de Saño", "Santo Domingo de Acobamba", "Sapallanga", "Sicaya", "Viques"],
+                    "Jauja": ["Seleccione el Distrito", "Acolla", "Apata", "Ataura", "Canchayllo", "Curicaca", "El Mantaro", "Huamalí", "Huaripampa", "Huertas", "Janjaillo", "Jauja", "Julcán", "Leonor Ordóñez", "Llocllapampa", "Marco", "Masma", "Masma Chicche", "Molinos", "Monobamba", "Muqui", "Muquiyauyo", "Paca", "Paccha", "Pancán", "Parco", "Pomacancha", "Ricrán", "San Lorenzo", "San Pedro de Chunán", "Sausa", "Sincos", "Tunanmarca", "Yauli", "Yauyos"],
+                    "Junín": ["Seleccione el Distrito", "Carhuamayo", "Ondores", "Junín", "Ulcumayo"],
+                    "Satipo": ["Seleccione el Distrito", "Covirialí", "Llaylla", "Mazamari", "Pampa Hermosa", "Pangoa", "Río Negro", "Río Tambo", "Satipo", "Vizcatán del Ene"],
+                    "Tarma": ["Seleccione el Distrito", "Acobamba", "Huaricolca", "Huasahuasi", "La Unión", "Palca", "Palcamayo", "San Pedro de Cajas", "Tapo", "Tarma"],
+                    "Yauli": ["Seleccione el Distrito", "Chacapalta", "Huayhuay", "La Oroya", "Marcapomacocha", "Morococha", "Paccha", "Santa Barbara de Carhuacayán", "Santa Rosa de Sacco", "Suitucancha", "Yauli"]
+                  },
+                  //
+                  "La_Libertad": {
+                    "Ascope": ["Seleccione el Distrito", "Ascope", "Casa Grande", "Chicama", "Chocope", "Magdalena de Cao", "Paiján", "Rázuri", "Santiago de Cao"],
+                    "Bolívar": ["Seleccione el Distrito", "Bolívar", "Bambamarca", "Condormarca", "Longotea", "Uchumarca", "Ucuncha"],
+                    "Chepén": ["Seleccione el Distrito", "Chepén", "Pacanga", "Pueblo Nuevo"],
+                    "Julcán": ["Seleccione el Distrito", "Calamarca", "Carabamba", "Huaso", "Julcán"],
+                    "Gran Chimú": ["Seleccione el Distrito", "Cascas", "Lucma", "Marmot", "Sayapullo"],
+                    "Otuzco": ["Seleccione el Distrito", "Agallpampa", "Charat", "Huaranchal", "La Cuesta", "Mache", "Otuzco", "Paranday", "Salpo", "Sinsicap", "Usquil"],
+                    "Pacasmayo": ["Seleccione el Distrito", "Guadalupe", "Jequetepeque", "Pacasmayo", "San José", "San Pedro de Lloc"],
+                    "Pataz": ["Seleccione el Distrito", "Buldibuyo", "Chilia", "Huancaspata", "Huaylillas", "Huayo", "Ongón", "Parcoy", "Pataz", "Pías", "Santiago de Challas", "Taurija", "Tayabamba", "Urpay"],
+                    "Sánchez Carrión": ["Seleccione el Distrito", "Chugay", "Cochorco", "Curgos", "Huamachuco", "Marcabal", "Sanagorán", "Sarín", "Sartimbamba"],
+                    "Santiago de Chuco": ["Seleccione el Distrito", "Angasmarca", "Cachicadán", "Mollebamba", "Mollepata", "Quiruvilca", "Santa Cruz de Chuca", "Santiago de Chuco", "Sitabamba"],
+                    "Trujillo": ["Seleccione el Distrito", "El Porvenir", "Florencia de Mora", "Huanchaco", "La Esperanza", "Laredo", "Moche", "Poroto", "Salaverry", "Simbal", "Trujillo", "Víctor Larco Herrera"],
+                    "Virú": ["Seleccione el Distrito", "Chao", "Guadalupito", "Virú"]
+                  },
+                  //
+                  "Lambayeque": {
+                    "Chiclayo": ["Seleccione el Distrito", "Cayaltí", "Chiclayo", "Chongoyape", "Eten", "Puerto Eten", "José Leonardo Ortiz", "La Victoria", "Lagunas", "Monsefú", "Nueva Arica", "Oyotún", "Pátapo", "Picsi", "Pimentel", "Pomalca", "Pucalá", "Reque", "Santa Rosa", "Tumán", "Zaña"],
+                    "Ferreñafe": ["Seleccione el Distrito", "Cañaris", "Ferreñafe", "Incahuasi", "Manuel Antonio Mesones Muro", "Pítipo", "Pueblo Nuevo"],
+                    "Lambayeque": ["Seleccione el Distrito", "Chóchope", "Íllimo", "Jayanca", "Lambayeque", "Mochumí", "Mórrope", "Motupe", "Olmos", "Pacora", "Salas", "San José", "Túcume"]
+                  },
+                  //
+                  "Lima": {
+                    "Barranca": ["Seleccione el Distrito", "Barranca", "Paramonga", "Pativilca", "Supe", "Supe Puerto"],
+                    "Cajatambo": ["Seleccione el Distrito", "Gorgor", "Huancapón", "Cajatambo", "Copa", "Manás"],
+                    "Canta": ["Seleccione el Distrito", "Arahuay", "Canta", "Huamantanga", "Huaros", "Lachaqui", "San Buenaventura", "Santa Rosa de Quives"],
+                    "Cañete": ["Seleccione el Distrito", "Asia", "Calango", "Cerro Azul", "Chilca", "Coayllo", "Imperial", "Lunahuaná", "Mala", "Nuevo Imperial", "Pacarán", "Quilmaná", "San Antonio", "San Luis", "San Vicente de Cañete", "Santa Cruz de Flores", "Zúñiga"],
+                    "Huaral": ["Seleccione el Distrito", "Atavillos Alto", "Atavillo", "Aucallama", "Chancay", "Huaral", "Ihuarí", "Lampían", "Pacaraos", "Santa Cruz de Andama", "Sumbilca", "San Miguel de Acos", "Veintisiete de noviembre"],
+                    "Huarochirí": ["Seleccione el Distrito", "Antioquía", "Callahuanca", "Carampoma", "Chicla", "Cuenca", "Huachupampa", "Huanza", "Huarochirí", "Lahuaytambo", "Langa", "Laraos", "Mariatana", "Matucana", "Ricardo Palma", "San Andrés de Tupicocha", "San Antonio", "San Bartolomé", "San Damián", "San Juan de Iris", "San Juan de Tantaranche", "San Lorenzo de Quinti", "San Mateo", "San Mateo de Otao", "San Pedro de Casta", "San Pedro de Huancayre", "Sangallaya", "Santa Eulalia", "Santiago de Anchucaya", "Santiago de Tuna", "Santo Domingo de los Olleros", "San Jerónimo de Surco"],
+                    "Huaura": ["Seleccione el Distrito", "Ámbar", "Caleta De Carquín", "Checras", "Huacho", "Hualmay", "Huaura", "Leoncio Prado", "Paccho", "Santa Leonor", "Santa María", "Sayán", "Vegueta"],
+                    "Lima": ["Seleccione el Distrito", "Ancón", "Ate", "Barranco", "Braña", "Carabayllo", "Chaclacayo", "Chorrillos", "Cieneguilla", "Comas", "El Agustino", "Independencia", "Sesús María", "La Molina", "La Victoria", "Lima", "Lince", "Los Olivos", "Lurigancho-Chosica", "Lurin", "Magdalena de Mar", "Miraflores", "Pueblo Libre", "Pachacámac", "Pucusana", "Puente Piedra", "Punta Hermosa", "Punta Negra", "Rímac", "San Bartolo", "San Borja", "San Isidro", "San Juan de Lurigancho", "San Juan de Miraflores", "San Luis", "San Martín de Porres", "San Miguel", "Santa Anita", "Santa María del Mar", "Santa Rosa", "Santiago de Surco", "Surquillo", "Villa el salvador", "Villa María del Triunfo"],
+                    "Oyón": ["Seleccione el Distrito", "Andajes", "Caujul", "Cochamarca", "Naván", "Oyón", "Pachangara"],
+                    "Yauyos": ["Seleccione el Distrito", "Alis", "Ayauca", "Ayavirí", "Azángaro", "Cacra", "Carania", "Catahuasi", "Chocos", "Cochas", "Colonia", "Hongos", "Huampara", "Huancaya", "Huangáscar", "Huantán", "Huañec", "Laraos", "Lincha", "Madean", "Miraflores", "Omas", "Quinches", "Quinocay", "San Lorenzo de Putinza", "San Joaquin", "San Pedro de Pilas", "Tanta", "Tauripampa", "Tomas", "Tupe", "Viñac", "Vitis", "Yauyos"]
+                  },
+                  //
+                  "Loreto": {
+                    "Alto Amazonas": ["Seleccione el Distrito", "Balsapuerto", "Jaberos", "Lagunas", "Santa Cruz", "Teniente César López Rojas", "Yurimaguas"],
+                    "Datem del Marañón": ["Seleccione el Distrito", "Barranca", "Cahuapanas", "Manseriche", "Morona", "Pastaza", "Andoas"],
+                    "Loreto": ["Seleccione el Distrito", "Nauta", "Parinari", "Tigre", "Trompeteros", "Urarinas"],
+                    "Maynas": ["Seleccione el Distrito", "Alto Nanay", "Fernando Lores", "Indiana", "Iquitos", "Las Amazonas", "Mazán", "Napo", "Punchana", "Torres Causana", "Belén", "San Juan Bautista"],
+                    "Mariscal Ramón Castilla": ["Seleccione el Distrito", "Pebas", "Ramón Castilla", "San Pablo", "Yavarí"],
+                    "Putumayo": ["Seleccione el Distrito", "Putumayo", "Rosa Panduro", "Yaguas", "Teniente Manuel Clavero"],
+                    "Requena": ["Seleccione el Distrito", "Alto Tapiche", "Capelo", "Emilio San Martín", "Maquía", "Puinahua", "Requena", "Saquena", "Soplin", "Tapiche", "Jenaro Herrera", "Yaquerana"],
+                    "Ucayali": ["Seleccione el Distrito", "Contamana", "Inahuaya", "Padre Márquez", "Pampa Hermosa", "Sarayacu", "Alfredo Vargas Guerra"]
+                  },
+                  //
+                  "Madre de Dios": {
+                    "Manu": ["Seleccione el Distrito", "Fitzcarrald", "Madre de Dios", "Manu", "Huepetuhe"],
+                    "Tambopata": ["Seleccione el Distrito", "Inambari", "Las Piedras", "Laberinto", "Tambopata"],
+                    "Tahuamanu": ["Seleccione el Distrito", "Iberia", "Iñapari", "Tahuamanu"]
+                  },
+                  //
+                  "Moquegua": {
+                    "General Sánchez Cerro": ["Seleccione el Distrito", "Chojata", "Coalaque", "Ichuña", "La Capilla", "Lloque", "Matalaque", "Omate", "Puquina", "Quinistaquillas", "Ubinas", "Yunga"],
+                    "Ilo": ["Seleccione el Distrito", "El Algarrobal", "Ilo", "Pacocha"],
+                    "Mariscal Nieto": ["Seleccione el Distrito", "Carumas", "Cuchumbaya", "Moquegua", "Samegua", "San Cristóbal de Calacoa", "Torata"]
+                  },
+                  //
+                  "Pasco": {
+                    "Daniel Alcides Carrión": ["Seleccione el Distrito", "Chacatán", "Goyllarisquizga", "Paucar", "San Pedro de Pillao", "Santa Ana de Tusi", "Tapuc", "Vilvabamba", "Yanahuanca"],
+                    "Oxapampa": ["Seleccione el Distrito", "Chontabamba", "Constitución", "Huancabamba", "Oxapampa", "Palcazu", "Pozuzo", "Puerto Bermúdez", "Villa Rica"],
+                    "Pasco": ["Seleccione el Distrito", "Chaupimarca", "Huachón", "Huariaca", "Huayllay", "Ninacaca", "Pallanchacra", "Paucartambo", "San Francisco de Asis de Yarusyacán", "Simón Bolívar", "Ticlacayán", "Tinyahuarco", "Vicco", "Yanacancha"]
+                  },
+                //
+                "Piura": {
+                    "Ayabaca": ["Seleccione el Distrito", "Ayabaca", "Frías", "Jililí", "Lagunas", "Montero", "Pacaipampa", "Paimas", "Sapillica", "Sincchez", "Suyo"],
+                    "Huancabamba": ["Seleccione el Distrito", "Canchaque", "El Carmen de la Frontera", "Huancabamba", "Huarmaca", "Lalaquiz", "San Miguel de El Faique", "Sóndor", "Sondorillo"],
+                    "Morropón": ["Seleccione el Distrito", "Buenos Aires", "Chalaco", "Chulucanas", "La Matanza", "Morropón", "Salitral", "San Juan de Bigote", "Santa Catalina de Mossa", "Santo Domngo", "Yamango"],
+                    "Paita": ["Seleccione el Distrito", "Amotape", "Colán", "El Arenal", "La Huaca", "Paita", "Tamarindo", "Vichayal"],
+                    "Piura": ["Seleccione el Distrito", "Castilla", "Catacaos", "Cura Mori", "El Tallán", "La Arena", "La Unión", "Las Lomas", "Piura", "Tambogrande", "26 de Octubre"],
+                    "Sechura": ["Seleccione el Distrito", "Bellavista de la Unión", "Bernal", "Cristo nos Valga", "Rinconada-Llicuar", "Sechura", "Vice"],
+                    "Sullana": ["Seleccione el Distrito", "Bellavista", "Marcavelica", "Salitral", "Sullana", "Querecotillo", "Lancones", "Ignacion Esdudero", "Miguel Checa"],
+                    "Talara": ["Seleccione el Distrito", "El Alto", "La Brea", "Lobitos", "Los Órganos", "Máncora", "Pirañas"]
+                  },
+                  //
+                  "Puno": {
+                    "Azángaro": ["Seleccione el Distrito", "Achaya", "Arapa", "Asilo", "Azángaro", "Caminaca", "Chupa", "José Domingo Choquehuanca", "Muñani", "Potoni", "Samán", "San Antón", "San José", "San Juan de Salinas", "Santiago de Pupuja", "Tirapata"],
+                    "Carabaya": ["Seleccione el Distrito", "Ajoyani", "Ayapata", "Coasa", "Corani", "Crucero", "Ituata", "Macusani", "Ollachea", "San Gabán", "Usicayos"],
+                    "Chucuito": ["Seleccione el Distrito", "Desaguadero", "Huacullani", "Juli", "Kelluyo", "Pisacoma", "Pomata", "Zepita"],
+                    "El Collao": ["Seleccione el Distrito", "Capaso", "Conduriri", "Ilave", "Pilcuyo", "Santa Rosa"],
+                    "Huancané": ["Seleccione el Distrito", "Huancané", "Pusi", "Vilque Chico", "Taraco", "Huatasani"],
+                    "Lampa": ["Seleccione el Distrito", "Cabanilla", "Calapuja", "Lampa", "Nicasio", "Ocuviri", "Palca", "Paratía", "Pucará", "Santa Lucía", "Vilavila"],
+                    "Melgar": ["Seleccione el Distrito", "Antauta", "Ayaviri", "Cupi", "Llalli", "Macari", "Ñuñoa", "Orurillo", "Santa Rosa", "Umachiri"],
+                    "Moho": ["Seleccione el Distrito", "Conima", "Huayrapata", "Moho", "Tilali"],
+                    "Puno": ["Seleccione el Distrito", "Ácora", "Amantaní", "Atuncolla", "Capachica", "Chucuito", "Coata", "Huata", "Mañazo", "Paucarcolla", "Pichacani", "Platería", "Puno", "San Antonio", "Tiquillaca", "Vilque"],
+                    "San Antonio de Putina": ["Seleccione el Distrito", "Ananea", "Pedro Vilca Apaza", "Putina", "Quilcapuncu", "Sina"],
+                    "San Román": ["Seleccione el Distrito", "Cabana", "Cabanillas", "Caracoto", "Juliaca", "San Miguel"],
+                    "Sandia": ["Seleccione el Distrito", "Alto Inambari", "Cuyocuyo", "Limbani", "Patamburco", "Phara", "Quiaca", "San Juan del Oro", "San Pedro de Putinapunco", "Sandia", "Yanahuaya"],
+                    "Yunguyo": ["Seleccione el Distrito", "Anapia", "Copani", "Cuturapi", "Ollaraya", "Tinacachi", "Unicachi", "Yunguyo"]
+                  },
+                  //
+                  "San Martín": {
+                    "Bellavista": ["Seleccione el Distrito", "Alto Biavo", "Bajo Biavo", "Bellavista", "Huallaga", "San Pablo", "San Rafael"],
+                    "El Dorado": ["Seleccione el Distrito", "Agua Blanca", "San José de Sisa", "San Martín", "Santa Rosa", "Shatoja"],
+                    "Huallaga": ["Seleccione el Distrito", "Alto Saposoa", "El Eslabón", "Piscoyacu", "Sacanche", "Saposoa", "Tingo de Saposoa"],
+                    "Lamas": ["Seleccione el Distrito", "Alonso de Alvarado", "Barranquita", "Caynarachi", "Cuñunbuqui", "Lamas", "Pinto Recodo", "Rumisapa", "San Roque de Cumbaza", "Shanao", "Tabalosos", "Zapatero"],
+                    "Mariscal Cáceres": ["Seleccione el Distrito", "Campanilla", "Costa Rica", "Dos de Mayo", "Huicungo", "Juanjuí", "Juanjuicillo", "La Merced", "Pachiza", "Pajarillo"],
+                    "Moyobamba": ["Seleccione el Distrito", "Calzada", "Habana", "Jepelacio", "Moyobamba", "Soritor", "Yantalo"],
+                    "Picota": ["Seleccione el Distrito", "Buenos Aires", "Caspizapa", "Picota", "Pilluana", "Pucacaca", "San Cristónal", "San Hilarion", "Shamboyacu", "Tingo se Ponanza", "Tres Unidos"],
+                    "Rioja": ["Seleccione el Distrito", "Awajún", "Elias Soplin Vargas", "Nueva Cajamarca", "Pardo Miguel", "Posic", "Rioja", "San Fernando", "Yorongos", "Yuracyacu"],
+                    "San Martín": ["Seleccione el Distrito", "Alberto Leveau", "Cacatachi", "Chazuta", "Chipurana", "El Porvenir", "Huimbayoc", "Juan Guerra", "La Banda de Shilcayo", "Morales", "Papaplaya", "San Antonio", "Sauce", "Shapaja", "Tarapoto"],
+                    "Tocache": ["Seleccione el Distrito", "Nuevo Progreso", "Pólvora", "Shunte", "Tocache", "Uchiza"]
+                  },
+                  //
+                  "Tacna": {
+                    "Candarave": ["Seleccione el Distrito", "Cairari", "Camilaca", "Candarave", "Curibaya", "Huanuara", "Quilahuani"],
+                    "Jorge Basadre": ["Seleccione el Distrito", "Ilabaya", "Ite", "Locumba"],
+                    "Tacna": ["Seleccione el Distrito", "Alto de la Alianza", "Calana", "Ciudad Nueva", "Coronel Gregorio Albarracín Lanchipa", "Inclán", "La Yarada-Los Palos", "Pachía", "Palca", "Pocollay", "Sama", "Tacna"],
+                    "Tarata": ["Seleccione el Distrito", "Estique", "Estique Pampa", "Heróes Albarracín", "Sitajara", "Susapaya", "Tarata", "Tarucachi", "Ticaco"]
+                  },
+                  //
+                  "Tumbes": {
+                    "Contralmirante Villar": ["Seleccione el Distrito", "Canoas de Punta Sal", "Casitas", "Zorritos"],
+                    "Tumbes": ["Seleccione el Distrito", "Corrales", "La Cruz", "Pampas de Hospital", "San Jacinto", "San Juan de la Virgen", "Tumbes"],
+                    "Zarumilla": ["Seleccione el Distrito", "Aguas Verdes", "Matapalo", "Papayal", "Zarumilla"]
+                  },
+                  //
+                  "Ucayali": {
+                    "Atalaya": ["Seleccione el Distrito", "Raimondi", "Sepahua", "Tahuanía", "Yurúa"],
+                    "Coronel Portillo": ["Seleccione el Distrito", "Callería", "Campoverde", "Iparía", "Masisea", "Yarinacocha", "Nueva Requena", "Manantay"],
+                    "Padre Abad": ["Seleccione el Distrito", "Alexander von Humboldt", "Curimaná", "Irázola", "Neshuya", "Padre Abad"],
+                    "Purús": ["Seleccione el Distrito", "Purús"]
+                  }
+
+            };

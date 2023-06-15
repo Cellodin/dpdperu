@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    select, textarea {
+      width: 220px;
+    }
+
+    .textbox-label {
+      display: none;
+    }
+
+    p {
+      margin: 0;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      const departmentSelect = $('#departmentSelect');
+      const provinceSelect = $('#provinceSelect');
+      const districtSelect = $('#districtSelect');
+
+      departmentSelect.change(function() {
+        const department = $(this).val();
+
+        provinceSelect.empty().append("<option value=''>Seleccionar provincia</option>");
+        districtSelect.empty().append("<option value=''>Seleccionar distrito</option>");
+
+        const provinces = {
+          'Amazonas': [
+            "Chachapoyas",
+            "Bagua",
+            "Bongará",
+            "Condorcanqui",
+            "Luya",
+            "Rodríguez de Mendoza",
+            "Utcubamba"
+          ],
+          'Ancash': [
+            "Huaraz",
+            "Aija",
+            "Antonio Raymondi",
+            "Asunción",
+            "Bolognesi",
+            "Carhuaz",
+            "Carlos Fermín Fitzcarrald",
+            "Casma",
+            "Corongo",
+            "Huari",
+            "Huarmey",
+            "Huaylas",
+            "Mariscal Luzuriaga",
+            "Ocros",
+            "Pallasca",
+            "Pomabamba",
+            "Recuay",
+            "Santa",
+            "Sihuas",
+            "Yungay"
+          ]
+        };
+
+        if (department in provinces) {
+          const provinceOptions = provinces[department].map(function(province) {
+            return "<option value='" + province + "'>" + province + "</option>";
+          });
+          provinceSelect.html(provinceOptions.join(''));
+        }
+      });
+
+      provinceSelect.change(function() {
+        const province = $(this).val();
+
+        districtSelect.empty().append("<option value=''>Seleccionar distrito</option>");
+
+        const districts = {
+          'Chachapoyas': [
+            "Chachapoyas",
+            "Asunción",
+            "Balsas",
+            "Cheto",
+            "Chiliquin",
+            "Chuquibamba",
+            "Granada",
+            "Huancas",
+            "La Jalca",
+            "Leimebamba",
+            "Levanto",
+            "Magdalena",
+            "Mariscal Castilla",
+            "Molinopampa",
+            "Montevideo",
+            "Olleros",
+            "Quinjalca",
+            "San Francisco de Daguas",
+            "San Isidro de Maino",
+            "Soloco",
+            "Sonche"
+          ],
+          'Huaraz': [
+            "Huaraz",
+            "Cochabamba",
+            "Colcabamba",
+            "Huanchay",
+            "Independencia",
+            "Jangas",
+            "La Libertad",
+            "Olleros",
+            "Pampas Grande",
+            "Pariacoto",
+            "Pira",
+            "Tarica"
+          ]
+        };
+
+        if (province in districts) {
+          const districtOptions = districts[province].map(function(district) {
+            return "<option value='" + district + "'>" + district + "</option>";
+          });
+          districtSelect.html(districtOptions.join(''));
+        }
+      });
+
+      $('#addValueBtn').click(function() {
+        const department = departmentSelect.val();
+        const province = provinceSelect.val();
+        const district = districtSelect.val();
+        const selectedOptions = [department, province, district].filter(Boolean);
+
+        const selectedValue = selectedOptions.join(' - ');
+        $('#textBox').val(selectedValue);
+
+        $('#exad-modal-38cbdf3').removeClass('active');
+        $('.exad-modal-overlay').removeClass('active');
+      });
+
+      $('.exad-close-btn').click(function() {
+        const department = departmentSelect.val();
+        const province = provinceSelect.val();
+        const district = districtSelect.val();
+        const selectedOptions = [department, province, district].filter(Boolean);
+
+        const selectedValue = selectedOptions.join(' - ');
+        $('#textBox').val(selectedValue);
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <form>
+      <p>Departamento:</p>
+      <select id="departmentSelect">
+        <option value="">Seleccionar departamento</option>
+        <option value="Amazonas">Amazonas</option>
+        <option value="Ancash">Áncash</option>
+      </select>
+      <br><br>
+      <p>Provincia:</p>
+      <select id="provinceSelect">
+        <option value="">Seleccionar provincia</option>
+      </select>
+      <br><br>
+      <p>Distrito:</p>
+      <select id="districtSelect">
+        <option value="">Seleccionar distrito</option>
+      </select>
+      <br><br>
+      <button id="addValueBtn" type="button">Agregar</button>
+    </form>
+  </div>
+</body>
+</html>

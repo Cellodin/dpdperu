@@ -1,0 +1,201 @@
+<html>
+
+<head>
+    <title>Selección de Ubicación</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .departamentotitle {
+            margin-bottom: 0px !important;
+            margin-top: 10px;
+        }
+
+        .provinciatitle {
+            margin-bottom: 0px !important;
+            margin-top: 10px;
+        }
+
+        .distritotitle {
+            margin-bottom: 0px !important;
+            margin-top: 10px;
+        }
+
+        .botonagregar {
+            margin-top: 10px;
+        }
+
+        .error {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p class="departamentotitle">Departamento:</p>
+        <select name="selectDepartamento" class="form-control departamentofield" required="">
+            <option value="">Seleccione</option>
+            <option value="Amazonas">Amazonas</option>
+            <option value="Ancash">Ancash</option>
+            <option value="Apurímac">Apurímac</option>
+            <option value="Arequipa">Arequipa</option>
+            <option value="Ayacucho">Ayacucho</option>
+            <option value="Cajamarca">Cajamarca</option>
+            <option value="Callao">Callao</option>
+            <option value="Cuzco">Cuzco</option>
+            <option value="Huancavelica">Huancavelica</option>
+            <option value="Huánuco">Huánuco</option>
+            <option value="Ica">Ica</option>
+            <option value="Junín">Junín</option>
+            <option value="La_Libertad">La Libertad</option>
+            <option value="Lambayeque">Lambayeque</option>
+            <option value="Lima">Lima</option>
+            <option value="Loreto">Loreto</option>
+            <option value="Madre_de_Dios">Madre de Dios</option>
+            <option value="Moquegua">Moquegua</option>
+            <option value="Pasco">Pasco</option>
+            <option value="Piura">Piura</option>
+            <option value="Puno">Puno</option>
+            <option value="San_Martín">San Martín</option>
+            <option value="Tacna">Tacna</option>
+            <option value="Tumbes">Tumbes</option>
+            <option value="Ucayali">Ucayali</option>
+        </select>
+
+        <p class="provinciatitle">Provincia:</p>
+        <select class="form-control provinciafield" name="selectProvincia" required="">
+            <option value="">Seleccione la Provincia</option>
+        </select>
+
+        <p class="distritotitle">Distrito:</p>
+        <select class="form-control distritofield" name="selectDistrito" required="">
+            <option value="">Seleccione el Distrito</option>
+        </select>
+
+        <button class="botonagregar" onclick="agregarDatos()">Agregar</button>
+
+        <textarea class="testt" readonly></textarea>
+
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            var provincias = {
+                "Amazonas": {
+                    "Bagua": ["Aramango", "Bagua", "Copallín", "El Parco", "Imaza", "La Peca"],
+                    "Bongará": ["Chisquilla", "Churuja", "Corosha", "Cuispes", "Florida", "Jazán",
+                        "Recta", "San Carlos", "Shipasbamba", "Valera", "Yambrasbamba"],
+                    "Chachapoyas": ["Asunsión", "Balsas", "Chachapoyas", "Cheto", "Chiliquín", "Chuquibamba", "Granada", "Huancas", "La Jalca", "Leimebamba", "Levanto", "Magdalena", "Mariscal Castilla", "Molinopampa", "Montevideo", "Olleros", "Quinjalca", "San Francisco de Daguas", "San Isidro de Maino", "Soloco", "Sonche"],
+                    "Condorcanqui": ["El Cenepa", "Nieva", "Río Santiago"],
+                    "Luya": ["Camporredondo", "Cocabamba", "Colcamar", "Conila", "Inguilpata", "Lámud", "Longuita", "Lonya Chico", "Luya", "Luya Viejo", "María", "Ocalli", "Ocumal", "Pisuquía", "Providencia", "San Cristóbal", "San Francisco del Yeso", "San Jerónimo", "San Juan de Lopecancha", "Santa Catalina", "Santo Tomás", "Tingo", "Trita"],
+                    "Rodríguez de Mendoza": ["San Nicolás", "Chirimoto", "Cochamal", "Huambo", "Limababa", "Longar", "Mariscal Benavides", "Milpuc", "Omia", "Santa Rosa", "Totora", "Vista Alegre"],
+                    "Utcubamba": ["Bagua Grande", "Cajaruro", "Cumba", "El Milagro", "Jamalca", "Lonya Grande", "Yamón"]
+                }
+            };
+
+            var sel_departamento = document.querySelector('select[name="selectDepartamento"]');
+            var sel_provincia = document.querySelector('select[name="selectProvincia"]');
+            var sel_distrito = document.querySelector('select[name="selectDistrito"]');
+            var textarea = document.querySelector('.testt');
+            var botonAgregar = document.querySelector('.botonagregar');
+
+            var valorActual = '';
+
+            function llenarSelect(selector, items) {
+                selector.innerHTML = '';
+                for (var item of items) {
+                    var option = document.createElement('option');
+                    option.value = item;
+                    option.text = item;
+                    selector.appendChild(option);
+                }
+            }
+
+            function cambiarProvincias() {
+                var departamento = sel_departamento.value;
+                if (departamento !== '') {
+                    var provincias_departamento = Object.keys(provincias[departamento]);
+                    llenarSelect(sel_provincia, provincias_departamento);
+                    cambiarDistritos();
+                } else {
+                    sel_provincia.innerHTML = '<option value="">Seleccione la Provincia</option>';
+                    sel_provincia.classList.remove('error');
+                    sel_distrito.innerHTML = '<option value="">Seleccione el Distrito</option>';
+                    sel_distrito.classList.remove('error');
+                }
+            }
+
+            function cambiarDistritos() {
+                var departamento = sel_departamento.value;
+                var provincia = sel_provincia.value;
+                if (departamento !== '' && provincia !== '') {
+                    var distritos_provincia = provincias[departamento][provincia];
+                    llenarSelect(sel_distrito, distritos_provincia);
+                } else {
+                    sel_distrito.innerHTML = '<option value="">Seleccione el Distrito</option>';
+                    sel_distrito.classList.remove('error');
+                }
+            }
+
+            sel_departamento.addEventListener('change', cambiarProvincias);
+            sel_provincia.addEventListener('change', cambiarDistritos);
+
+            botonAgregar.addEventListener('click', agregarDatos);
+
+            function agregarDatos() {
+                var departamento = sel_departamento.value;
+                var provincia = sel_provincia.value;
+                var distrito = sel_distrito.value;
+                if (departamento !== '' && provincia !== '' && distrito !== '') {
+                    var combinacion = departamento + ' - ' + provincia + ' - ' + distrito;
+                    if (combinacion !== valorActual) {
+                        textarea.value = combinacion;
+                        valorActual = combinacion;
+                        var dpdIngresado = document.querySelector('#dpdingresado');
+                        if (dpdIngresado) {
+                            dpdIngresado.value = textarea.value;
+                        }
+                    }
+                } else {
+                    textarea.value = '';
+                    valorActual = '';
+                }
+            }
+
+            function quitarClaseActive() {
+                var overlayDiv = document.querySelector('.exad-modal-overlay.active');
+                if (overlayDiv) {
+                    overlayDiv.classList.remove('active');
+                }
+            }
+
+            var botonAgregar = document.querySelector('.botonagregar');
+            botonAgregar.addEventListener('click', quitarClaseActive);
+
+
+            function quitarClaseActive2() {
+                var overlayDiv = document.querySelector('#exad-modal-38cbdf3');
+                if (overlayDiv) {
+                    overlayDiv.classList.remove('active');
+                }
+            }
+
+            var botonAgregar = document.querySelector('.botonagregar');
+            botonAgregar.addEventListener('click', quitarClaseActive2);
+
+        });
+    </script>
+</body>
+
+</html>

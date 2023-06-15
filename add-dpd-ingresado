@@ -1,0 +1,84 @@
+$(document).ready(function() {
+    $('#departmentSelect').change(function() {
+      var department = $(this).val();
+  
+      $('#provinceSelect').empty().append("<option value=''>Seleccionar provincia</option>");
+      $('#districtSelect').empty().append("<option value=''>Seleccionar distrito</option>");
+  
+      if (department === 'Amazonas') {
+        var provinces = [
+          "Chachapoyas",
+          "Bagua",
+          "Bongará",
+          "Condorcanqui",
+          "Luya",
+          "Rodríguez de Mendoza",
+          "Utcubamba"
+        ];
+  
+        $.each(provinces, function(index, value) {
+          $('#provinceSelect').append("<option value='" + value + "'>" + value + "</option>");
+        });
+      }
+    });
+  
+    $('#provinceSelect').change(function() {
+      var province = $(this).val();
+  
+      $('#districtSelect').empty().append("<option value=''>Seleccionar distrito</option>");
+  
+      if (province === 'Chachapoyas') {
+        var districts = [
+          "Chachapoyas",
+          "Asunción",
+          "Balsas",
+          "Cheto",
+          "Chiliquin",
+          "Chuquibamba",
+          "Granada",
+          "Huancas",
+          "La Jalca",
+          "Leimebamba",
+          "Levanto",
+          "Magdalena",
+          "Mariscal Castilla",
+          "Molinopampa",
+          "Montevideo",
+          "Olleros",
+          "Quinjalca",
+          "San Francisco de Daguas",
+          "San Isidro de Maino",
+          "Soloco",
+          "Sonche"
+        ];
+  
+        $.each(districts, function(index, value) {
+          $('#districtSelect').append("<option value='" + value + "'>" + value + "</option>");
+        });
+      }
+    });
+  
+    $('#addValueBtn').click(function() {
+      var department = $('#departmentSelect').val();
+      var province = $('#provinceSelect').val();
+      var district = $('#districtSelect').val();
+      var selectedOptions = [];
+  
+      if (department) {
+        selectedOptions.push(department);
+      }
+      if (province) {
+        selectedOptions.push(province);
+      }
+      if (district) {
+        selectedOptions.push(district);
+      }
+  
+      var selectedValue = selectedOptions.join(' - ');
+      $('#textBox').val(selectedValue);
+  
+      // Llenar el input con el valor seleccionado
+      $('#dpdingresado').val(selectedValue);
+    });
+  });
+  
