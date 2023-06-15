@@ -153,6 +153,8 @@ $(document).ready(function () {
     var dpdtitulo = $('.dpdtitulo');
     var accionadpd = $('.accionadpd');
     var dpdingresadoField = $('#dpdingresado_field');
+    var dlimafield = $('#dlima_field');
+    var dlimaingresado =$('#dlimaingresado_field');
 
     // Agregar un evento de cambio al input de tipo radio
     radioLimaMetropolitana.change(function () {
@@ -165,12 +167,14 @@ $(document).ready(function () {
             dpdtitulo.hide();
             accionadpd.hide();
             dpdingresadoField.hide();
+            dlimafield.show();
+            dlimaingresado.show();
         }
     });
 });
 
 
-// 1.8 - muestra seleccion dpd cuando esta seleccionado envio para otro lugar ---------------------------
+// 1.8 - muestra seleccion dpd cuando esta seleccionado envio para otro lugar y oculta distrito titulo y textbox ---------------------------
 
 $(document).ready(function () {
     // Obtener el input de tipo radio con id "enviodestino_otro-lugar"
@@ -180,6 +184,8 @@ $(document).ready(function () {
     var dpdtitulo = $('.dpdtitulo');
     var accionadpd = $('.accionadpd');
     var dpdingresadoField = $('#dpdingresado_field');
+    var dlimafield = $('#dlima_field');
+    var dlimaingresado =$('#dlimaingresado_field');
 
     // Ocultar los elementos al cargar la página
     dpdtitulo.hide();
@@ -193,10 +199,16 @@ $(document).ready(function () {
             // Limpiar el valor del input con id "dpdingresado"
             $('#dpdingresado').val('');
 
+            // Colocar el valor "-" en el select con id "select2-dlimaingresado-container"
+            $('#select2-dlimaingresado-container').val('-');
+
             // Mostrar los elementos
             dpdtitulo.show();
             accionadpd.show();
             dpdingresadoField.show();
+            dlimafield.hide();
+            dlimaingresado.hide();
+
         }
     });
 });
